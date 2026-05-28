@@ -1,0 +1,495 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+/* Solo estilos que Bootstrap no puede hacer */
+body {
+    font-family: 'Nunito', sans-serif;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: sticky;
+    top: 0;
+}
+
+
+:root {
+    --primary-color: #0d6efd;
+    --primary-hover: #0b5ed7;
+    --bg-light: #f8f9fa;
+    --text-dark: #212529;
+    --transition-speed: 0.3s;
+}
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Forzar que todo el texto en el carrusel sea y se mantenga blanco en todos los tamaños de pantalla */
+.carousel-caption,
+.carousel-caption h2,
+.carousel-caption p,
+.carousel-caption .text-white {
+    color: #ffffff !important;
+}
+
+/* Forzar que el texto en las tarjetas de marcas mantenga su color blanco */
+.card-img-overlay p,
+.card-img-overlay p.text-white,
+.card-img-overlay h5 {
+    color: #ffffff !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-light); }
+::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-hover); }
+
+/* NAVBAR  */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1050; 
+}
+
+/* Ajuste cuando la WordPress admin bar está presente (usuario logueado) */
+body.admin-bar header {
+    top: 32px; /* altura estándar admin bar en escritorio */
+}
+
+@media screen and (max-width: 782px) {
+    body.admin-bar header {
+        top: 46px; /* admin bar móvil/tablet */
+    }
+}
+
+.navbar.bg-white {
+    background: rgba(255, 255, 255, 0.88) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 2px solid rgba(13, 110, 253, 0.15) !important;
+}
+
+.navbar-brand {
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 800;
+    font-size: 1.8rem !important;
+    color: var(--primary-color) !important;
+}
+
+.d-flex.gap-3 a.text-dark,
+.nav-link {
+    color: var(--text-dark) !important;
+    font-weight: 700;
+}
+
+.dropdown-item {
+    color: var(--text-dark) !important;
+    font-weight: 400; /* Letras no en negrita para las opciones del dropdown */
+}
+
+/* Efecto subrayado */
+.d-flex.gap-3 a.text-dark {
+    position: relative;
+    transition: color 0.3s;
+}
+.d-flex.gap-3 a.text-dark::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 3px;
+    border-radius: 99px;
+    background: var(--primary-color);
+    transition: width 0.3s;
+}
+.d-flex.gap-3 a.text-dark:hover {
+    color: var(--primary-color) !important;
+}
+.d-flex.gap-3 a.text-dark:hover::after {
+    width: 100%;
+}
+
+/* BARRA SUPERIOR E FOOTER BACKGROUND */
+header .bg-primary.text-white.py-1, footer.bg-primary {
+    background: var(--primary-color) !important;
+    font-weight: 700;
+}
+
+/* TEXTOS Y ICONOS PRIMARIOS */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+/* EFECTOS HOVER GENERALES EN CARDS (SOLEIL) */
+.card, .card-hover {
+    border-radius: 1.5rem !important;
+    border: none !important;
+    background-color: white !important;
+    box-shadow: 0 6px 30px rgba(13, 110, 253, 0.13);
+    transition: transform var(--transition-speed) cubic-bezier(.34,1.56,.64,1), box-shadow var(--transition-speed) ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px) rotate(-1deg);
+    box-shadow: 0 18px 40px rgba(13, 110, 253, 0.25) !important;
+}
+
+.categoria-circulo {
+    width: 90px;
+    height: 90px;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+    border: 3px solid transparent;
+}
+
+.categoria-circulo:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(13, 110, 253, 0.15) !important;
+    border-color: #0d6efd20;
+}
+
+.brand-card-warm {
+    background: linear-gradient(135deg, #f5e6c8 0%, #fdf5e6 100%);
+}
+
+.brand-card-peach {
+    background: linear-gradient(135deg, #fde8d8 0%, #fff5f0 100%);
+}
+
+.navbar {
+    transition: background-color var(--transition-speed);
+}
+
+.dropdown-menu {
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f5f9;
+    color: var(--primary-color);
+    padding-left: 25px;
+}
+
+#categoriesNav .btn {
+    font-weight: 600 !important;
+}
+
+@media (min-width: 992px) {
+    #categoriesNav .btn {
+        padding-left: 0.7rem !important;
+        padding-right: 0.7rem !important;
+        font-size: 0.82rem !important;
+        white-space: nowrap !important;
+    }
+    #categoriesNav ul.navbar-nav {
+        gap: 0.4rem !important;
+        flex-wrap: nowrap !important;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Corrigiendo espaciado de dropdowns por si se ocultan con scroll horizontal */
+#categoriesNav {
+    overflow: visible !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+    border-radius: 99px !important; 
+    text-transform: uppercase;
+    font-weight: 800 !important; /* wght 800 */
+    letter-spacing: 0.5px;
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover) !important;
+    transform: scale(1.06);
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4) !important;
+}
+
+/* FLECHAS DEL CARRUSEL MÃS VISIBLES */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    padding: 1.5rem;
+    background-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.form-control {
+    border-radius: 50rem;
+    border-color: rgba(33, 37, 41, 0.15) !important; /* var(--text-dark) sutil */
+}
+
+.input-group-text {
+    border-radius: 50rem 0 0 50rem !important;
+}
+
+.form-control.border-start-0 {
+    border-radius: 0 50rem 50rem 0 !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.comparison-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    height: 450px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.comparison-slider-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.img-after {
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+.comparison-range {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 0;
+    cursor: ew-resize;
+}
+
+.comparison-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background-color: white;
+    z-index: 5;
+    transform: translateX(-50%);
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.comparison-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.btn-success.rounded-circle {
+    transition: transform var(--transition-speed), background-color var(--transition-speed);
+}
+.btn-success.rounded-circle:hover {
+    transform: scale(1.15) rotate(-10deg);
+    background-color: #128c7e !important;
+}
+
+/* ===== DARK MODE STYLES ===== */
+[data-bs-theme="dark"] {
+    --bg-light: #1a1a1a;
+    --text-dark: #e0e0e0;
+    --scrollbar-track: #2a2a2a;
+    --card-bg: #2d2d2d;
+}
+
+[data-bs-theme="dark"] body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .bg-light {
+    background-color: #1a1a1a !important;
+}
+
+[data-bs-theme="dark"] .bg-white {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .navbar.bg-white {
+    background: rgba(45, 45, 45, 0.88) !important;
+    border-bottom-color: rgba(13, 110, 253, 0.25) !important;
+}
+
+[data-bs-theme="dark"] .card,
+[data-bs-theme="dark"] .card-hover {
+    background-color: #2d2d2d !important;
+    color: #e0e0e0;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-bs-theme="dark"] .card-body {
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .text-muted {
+    color: #a0a0a0 !important;
+}
+
+[data-bs-theme="dark"] .text-dark {
+    color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .d-flex.gap-3 a.text-dark {
+    color: #e0e0e0 !important;
+}
+
+[data-bs-theme="dark"] .d-flex.gap-3 a.text-dark:hover {
+    color: #0d6efd !important;
+}
+
+[data-bs-theme="dark"] .form-control {
+    background-color: #3a3a3a;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .form-control:focus {
+    background-color: #3a3a3a;
+    border-color: #0d6efd !important;
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .input-group-text {
+    background-color: #3a3a3a !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #a0a0a0;
+}
+
+[data-bs-theme="dark"] .dropdown-menu {
+    background-color: #2d2d2d;
+    border-color: #3a3a3a;
+}
+
+[data-bs-theme="dark"] .dropdown-item {
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .dropdown-item:hover {
+    background-color: #3a3a3a;
+    color: #0d6efd;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #0d6efd;
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary {
+    border-color: #6c757d;
+    color: #e0e0e0;
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+[data-bs-theme="dark"] .border-bottom {
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme="dark"] .shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-bs-theme="dark"] .collapse {
+    background-color: #2d2d2d !important;
+}
+
+[data-bs-theme="dark"] .table {
+    color: #e0e0e0;
+    border-color: #3a3a3a;
+}
+
+[data-bs-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #2a2a2a;
+}
+
+[data-bs-theme="dark"] .theme-toggle {
+    background-color: transparent;
+    border-color: #6c757d;
+    color: #e0e0e0;
+    transition: all var(--transition-speed) ease;
+}
+
+[data-bs-theme="dark"] .theme-toggle:hover {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+[data-bs-theme="light"] .theme-toggle {
+    background-color: transparent;
+    border-color: #dee2e6;
+    transition: all var(--transition-speed) ease;
+}
+
+[data-bs-theme="light"] .theme-toggle:hover {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
