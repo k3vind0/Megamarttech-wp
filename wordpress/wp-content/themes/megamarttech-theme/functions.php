@@ -64,6 +64,29 @@ function megamarttech_bootstrap_woo_fields($args, $key, $value) {
 add_filter('woocommerce_form_field_args', 'megamarttech_bootstrap_woo_fields', 10, 3);
 
 /**
+ * Usar la plantilla de login personalizada en la página de WooCommerce "My account".
+ * Esto evita que WordPress/WooCommerce cargue otra plantilla distinta para esa página.
+ */
+function megamarttech_force_login_template_for_myaccount( $template ) {
+    if ( is_admin() || ! function_exists( 'wc_get_page_id' ) ) {
+        return $template;
+    }
+
+    $myaccount_page_id = wc_get_page_id( 'myaccount' );
+
+    if ( $myaccount_page_id > 0 && is_page( $myaccount_page_id ) ) {
+        $custom_template = locate_template( 'page-login.php' );
+
+        if ( ! empty( $custom_template ) ) {
+            return $custom_template;
+        }
+    }
+
+    return $template;
+}
+add_filter( 'template_include', 'megamarttech_force_login_template_for_myaccount', 99 );
+
+/**
  * 2. Adaptar Botones de WooCommerce a Bootstrap 5
  * Convierte botones grises nativos al diseño primario/outline
  */

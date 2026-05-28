@@ -77,10 +77,11 @@ if (isset($_POST['register_submit'])) {
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/style.css" />
     <?php wp_head(); ?>
 </head>
-<body class="bg-light d-flex flex-column min-vh-100">
+<body <?php body_class('bg-light d-flex flex-column min-vh-100'); ?>>
 
     <header>
-        <div class="bg-primary text-white py-1 px-3 d-flex justify-content-between align-items-center" style="font-size:0.8rem;">
+        <div class="bg-primary text-white py-1 px-3 d-flex justify-content-between align-items-center"
+            style="font-size:0.8rem;">
             <span>¡Bienvenido a MegaMartTech mundial!</span>
             <div class="d-flex gap-3">
                 <span><i class="bi bi-geo-alt me-1"></i>Entregar a 423651</span>
@@ -89,13 +90,15 @@ if (isset($_POST['register_submit'])) {
             </div>
         </div>
 
+        <!-- Navbar principal -->
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 border-bottom shadow-sm">
             <div class="container align-items-center">
                 <a class="navbar-brand text-primary fs-3 me-auto d-flex align-items-center gap-2" href="<?php echo home_url('/'); ?>">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/imagenes/logo.png" alt="Logo MegaMartTech" height="40">
+                    <img src="<?php echo get_template_directory_uri(); ?>/imagenes/logo.png" alt="Logo MegaMartTech" height="40">
                     MegaMartTech
                 </a>
                 
+                <!-- Barra de búsqueda para desktop -->
                 <div class="d-none d-lg-flex flex-grow-1 mx-4">
                     <div class="input-group">
                         <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
@@ -104,42 +107,46 @@ if (isset($_POST['register_submit'])) {
                 </div>
 
                 <div class="d-flex gap-3 align-items-center">
+                    <!-- Icono de búsqueda para móvil -->
                     <a href="#" class="text-decoration-none text-dark d-lg-none d-flex align-items-center gap-1" data-bs-toggle="collapse" data-bs-target="#mobileSearch" aria-expanded="false" aria-controls="mobileSearch">
                         <i class="bi bi-search fs-5"></i>
                     </a>
 
-                    <a href="<?php echo home_url('/nosotros/'); ?>" class="text-decoration-none text-primary d-flex align-items-center gap-1 border border-primary rounded-pill px-3 py-1 bg-primary bg-opacity-10">
+                    <a href="<?php echo esc_url( home_url('/?page_id=18/') ); ?>" class="text-decoration-none text-primary d-flex align-items-center gap-1 border border-primary rounded-pill px-3 py-1 bg-primary bg-opacity-10">
                         <i class="bi bi-info-circle-fill fs-6"></i>
                         <span class="d-none d-lg-inline small fw-bold">Nosotros</span>
                     </a>
                     
-                    <?php if (is_user_logged_in()) : 
-                        $cu = wp_get_current_user(); ?>
-                        <a href="<?php echo admin_url('profile.php'); ?>" class="text-decoration-none text-dark d-flex align-items-center gap-1">
+                    <?php
+                    // Obtener URLs con fallbacks seguros
+                    $nosotros_url = home_url('/?page_id=18/');
+                    $login_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink( 'myaccount' ) : home_url('/?page_id=10/');
+                    $cart_url = '#';
+                    if ( function_exists('wc_get_cart_url') ) {
+                        $cu = wc_get_cart_url();
+                        if ( !empty($cu) ) $cart_url = $cu;
+                    }
+                    ?>
+                    <?php if ( is_user_logged_in() ) :
+                        $current_user = wp_get_current_user(); ?>
+                        <a href="<?php echo esc_url( function_exists('wc_get_page_permalink') ? wc_get_page_permalink( 'myaccount' ) : home_url('/') ); ?>" class="text-decoration-none text-dark d-flex align-items-center gap-1">
                             <i class="bi bi-person-circle fs-5"></i>
-                            <span class="d-none d-lg-inline small">Hola, <?php echo esc_html($cu->display_name ?: $cu->user_login); ?></span>
+                            <span class="d-none d-lg-inline small">Hola, <?php echo esc_html( $current_user->display_name ?: $current_user->user_login ); ?></span>
                         </a>
-                        <a href="<?php echo wp_logout_url(home_url()); ?>" class="text-decoration-none text-danger d-flex align-items-center gap-1 ms-2 d-none d-lg-flex">
+                        <a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>" class="text-decoration-none text-danger d-flex align-items-center gap-1 ms-2 d-none d-lg-flex">
                             <i class="bi bi-box-arrow-right fs-5"></i>
                             <span class="small">Salir</span>
                         </a>
                     <?php else : ?>
-                        <a href="<?php echo home_url('/login/'); ?>" class="text-decoration-none text-dark d-flex align-items-center gap-1">
+                        <a href="<?php echo esc_url( $login_url ); ?>" class="text-decoration-none text-dark d-flex align-items-center gap-1">
                             <i class="bi bi-person fs-5"></i>
                             <span class="d-none d-lg-inline small">Registrarse / Iniciar Sesión</span>
                         </a>
                     <?php endif; ?>
-                    
-                    <?php
-                    $cart_url = '#';
-                    if (function_exists('wc_get_cart_url') && wc_get_cart_url()) {
-                        $cart_url = wc_get_cart_url();
-                    }
-                    ?>
-                    <a href="<?php echo $cart_url; ?>" class="text-decoration-none text-dark d-flex align-items-center gap-1">
+                    <a href="<?php echo esc_url( $cart_url ); ?>" class="text-decoration-none text-dark d-flex align-items-center gap-1">
                         <span class="position-relative d-inline-block">
                             <i class="bi bi-cart fs-5"></i>
-                            <span data-cart-count class="badge bg-danger rounded-circle" style="display:none; font-size:0.65rem; position:absolute; top:-8px; right:-10px; padding:4px 6px;"></span>
+                            <span data-cart-count class="badge bg-danger rounded-circle" style="display:none; font-size:0.65rem; position: absolute; top: -8px; right: -10px; padding:4px 6px;"></span>
                         </span>
                         <span class="d-none d-lg-inline small">Carrito</span>
                     </a>
@@ -166,9 +173,9 @@ if (isset($_POST['register_submit'])) {
                                 <i class="bi bi-controller me-1"></i>Accesorios Inteligentes
                             </a>
                             <ul class="dropdown-menu shadow border-0">
-                                <li><a class="dropdown-item" href="<?php echo home_url('/auriculares/'); ?>"><i class="bi bi-headset me-2 text-primary"></i>Auriculares</a></li>
-                                <li><a class="dropdown-item" href="<?php echo home_url('/teclados/'); ?>"><i class="bi bi-keyboard me-2 text-primary"></i>Teclados</a></li>
-                                <li><a class="dropdown-item" href="<?php echo home_url('/ratones-y-alfombrillas/'); ?>"><i class="bi bi-mouse me-2 text-primary"></i>Ratones y Alfombrillas</a></li>
+                                <li><a class="dropdown-item" href="<?php echo home_url('/?page_id=20/'); ?>"><i class="bi bi-headset me-2 text-primary"></i>Auriculares</a></li>
+                                <li><a class="dropdown-item" href="<?php echo home_url('/?page_id=24/'); ?>"><i class="bi bi-keyboard me-2 text-primary"></i>Teclados</a></li>
+                                <li><a class="dropdown-item" href="<?php echo home_url('/?page_id=22/'); ?>"><i class="bi bi-mouse me-2 text-primary"></i>Ratones y Alfombrillas</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -209,7 +216,7 @@ if (isset($_POST['register_submit'])) {
         </nav>
     </header>
 
-    <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
+    <main class="flex-grow-1 d-flex align-items-start justify-content-center py-4 py-lg-5">
         <div class="w-100" style="max-width: 500px; padding: 0 15px;">
             
             <?php if (!empty($error_message)) : ?>
@@ -360,7 +367,7 @@ if (isset($_POST['register_submit'])) {
                         <a href="<?php echo home_url('/'); ?>" class="btn btn-outline-primary fw-semibold">
                             <i class="bi bi-arrow-left me-1"></i>Volver al inicio
                         </a>
-                        <a href="<?php echo home_url('/nosotros/'); ?>" class="btn btn-primary fw-semibold">
+                        <a href="<?php echo home_url('/?page_id=18/'); ?>" class="btn btn-primary fw-semibold">
                             <i class="bi bi-info-circle me-1"></i>Conocer nosotros
                         </a>
                     </div>

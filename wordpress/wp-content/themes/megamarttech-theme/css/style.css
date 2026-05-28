@@ -92,6 +92,14 @@ body.admin-bar header {
     color: var(--primary-color) !important;
 }
 
+/* Fuerza el tamaño del logo para evitar escalados inesperados */
+.navbar-brand img {
+    height: 40px !important;
+    width: auto !important;
+    max-width: 220px; /* evita que el logo se desborde en pantallas muy anchas */
+    display: inline-block;
+}
+
 .d-flex.gap-3 a.text-dark,
 .nav-link {
     color: var(--text-dark) !important;

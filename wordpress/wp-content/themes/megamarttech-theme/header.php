@@ -52,16 +52,12 @@
                     <?php
                     // Obtener URLs con fallbacks seguros
                     $nosotros_url = home_url('/?page_id=18/');
-                    $login_url = home_url('/?page_id=10/');
-                    $cart_url = '#';
-                    if ( function_exists('wc_get_cart_url') ) {
-                        $cu = wc_get_cart_url();
-                        if ( !empty($cu) ) $cart_url = $cu;
-                    }
+                    $login_url = function_exists('wc_get_page_permalink') ? wc_get_page_permalink( 'myaccount' ) : home_url('/?page_id=10/');
+                    $cart_url = function_exists('wc_get_cart_url') ? wc_get_cart_url() : home_url('/cart/');
                     ?>
                     <?php if ( is_user_logged_in() ) :
                         $current_user = wp_get_current_user(); ?>
-                        <a href="<?php echo esc_url( admin_url('profile.php') ); ?>" class="text-decoration-none text-dark d-flex align-items-center gap-1">
+                        <a href="<?php echo esc_url( function_exists('wc_get_page_permalink') ? wc_get_page_permalink( 'myaccount' ) : home_url('/') ); ?>" class="text-decoration-none text-dark d-flex align-items-center gap-1">
                             <i class="bi bi-person-circle fs-5"></i>
                             <span class="d-none d-lg-inline small">Hola, <?php echo esc_html( $current_user->display_name ?: $current_user->user_login ); ?></span>
                         </a>
