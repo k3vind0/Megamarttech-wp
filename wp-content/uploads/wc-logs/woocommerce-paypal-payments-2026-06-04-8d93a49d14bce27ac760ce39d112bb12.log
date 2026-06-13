@@ -1,0 +1,98 @@
+2026-06-04T15:05:22+00:00 DEBUG #8626 - [New Request] GET /wp-admin/admin.php
+2026-06-04T15:05:22+00:00 DEBUG #8626 - GET https://api.woocommerce.com/integrations/ppc/v1/customer/partners/K8SKZ36LQBWXJ/merchant-integrations/
+Response: Array
+(
+    [code] => 404
+    [message] => Not Found
+)
+
+Response Body: {"statusCode":404,"error":"Not Found","message":"Not Found"}
+
+2026-06-04T15:05:22+00:00 WARNING #8626 - [Error] Not Found CONTEXT: {"args":{"method":"GET","headers":{"Authorization":"Bearer token","Content-Type":"application/json"}},"response":{"headers":{},"body":"{"statusCode":404,"error":"Not Found","message":"Not Found"}","response":{"code":404,"message":"Not Found"},"cookies":[],"filename":null,"http_response":{"data":null,"headers":null,"status":null}}}
+2026-06-04T15:05:25+00:00 DEBUG #2914 - [New Request] GET /index.php
+2026-06-04T15:05:25+00:00 DEBUG #2914 - GET https://api.woocommerce.com/integrations/ppc/v1/notifications/webhooks
+Response: Array
+(
+    [code] => 404
+    [message] => Not Found
+)
+
+Response Body: {"statusCode":404,"error":"Not Found","message":"Not Found"}
+
+2026-06-04T15:05:35+00:00 DEBUG #3243 - [New Request] POST /index.php
+2026-06-04T15:05:35+00:00 INFO #3243 - Generating onboarding URL for: production-express_checkout-
+2026-06-04T15:05:36+00:00 DEBUG #3243 - POST https://api.woocommerce.com/integrations/ppc/v2/customer/partner-referrals
+Request Body: {"partner_config_override":{"return_url":"http:\/\/mgwp.com\/wp-admin\/admin.php?page=wc-settings&tab=checkout&section=ppcp-gateway&ppcpToken=eyJrIjoicHJvZHVjdGlvbi1leHByZXNzX2NoZWNrb3V0LSIsInUiOjEsImgiOiJkMDIwY2ViOTlmMTQ2ZmNlZWJhOTc0ZjBhNmQwZDJiYSJ9","return_url_description":"Return to your shop.","show_add_credit_card":false},"products":["EXPRESS_CHECKOUT"],"legal_consents":[{"type":"SHARE_DATA_CONSENT","granted":true}],"operations":[{"operation":"API_INTEGRATION","api_integration_preference":{"rest_api_integration":{"integration_method":"PAYPAL","integration_type":"FIRST_PARTY","first_party_details":{"features":["PAYMENT","REFUND","ADVANCED_TRANSACTIONS_SEARCH","TRACKING_SHIPMENT_READWRITE","BILLING_AGREEMENT"],"seller_nonce":"a1233wtergfsdt4365tzrshgfbaewa36AGa1233wtergfsdt4365tzrshgfbaewa36AG"}}}}]}
+Response Debug ID: e7286f2db54fd
+Response: Array
+(
+    [code] => 201
+    [message] => Created
+)
+
+
+2026-06-04T15:05:39+00:00 DEBUG #8791 - [New Request] POST /index.php
+2026-06-04T15:05:39+00:00 DEBUG #8791 - Loaded onboarding URL from cache: production-express_checkout-
+2026-06-04T15:05:39+00:00 INFO #8791 - Using cached onboarding URL for: production-express_checkout-
+2026-06-04T15:05:39+00:00 DEBUG #9172 - [New Request] POST /index.php
+2026-06-04T15:05:39+00:00 DEBUG #9172 - Loaded onboarding URL from cache: production-express_checkout-
+2026-06-04T15:05:39+00:00 INFO #9172 - Using cached onboarding URL for: production-express_checkout-
+2026-06-04T15:10:01+00:00 DEBUG #2530 - [New Request] POST /index.php
+2026-06-04T15:10:01+00:00 INFO #2530 - Storing one-time OAuth credentials... CONTEXT: {"shared_id":"BAAnWP4xnmM8214pqqnR6TItzNXsEGZuhB6gei6QrOC7fUPuYTryftIzOuxnEtc36aLHQcI0u94FOhOY54","auth_code":"C21AAOH1t5uikeuBkY3GqddVJm2R6Mi4mqmu4gv6gGSmimAQItztXup6QftXRtnvxFVPLNoawsF_EcD2QqUF84LG0soJKQW3A","use_sandbox":false}
+2026-06-04T15:10:05+00:00 DEBUG #7495 - [New Request] GET /wp-admin/admin.php
+2026-06-04T15:10:05+00:00 DEBUG #7495 - Validating onboarding ppcpToken: ey...JiYSJ9
+2026-06-04T15:10:05+00:00 INFO #7495 - Validated onboarding ppcpToken: ey...JiYSJ9
+2026-06-04T15:10:05+00:00 INFO #7495 - Extracting connection data from request...
+2026-06-04T15:10:05+00:00 INFO #7495 - Found OAuth merchant data in request CONTEXT: {"merchant_id":"KY5SA7SN7RV6L","merchant_email":"kevinalvaneciosup@gmail.com","seller_type":"personal"}
+2026-06-04T15:10:05+00:00 INFO #7495 - Attempting OAuth login to PayPal... CONTEXT: {"sandbox":false,"shared_id":"BAAnWP4xnmM8214pqqnR6TItzNXsEGZuhB6gei6QrOC7fUPuYTryftIzOuxnEtc36aLHQcI0u94FOhOY54"}
+2026-06-04T15:10:06+00:00 DEBUG #7495 - POST https://api-m.paypal.com/v1/oauth2/token/
+Response Debug ID: f34deabbf10fb
+Response: Array
+(
+    [code] => 200
+    [message] => OK
+)
+
+
+2026-06-04T15:10:07+00:00 DEBUG #7495 - GET https://api-m.paypal.com/v1/customer/partners/K8SKZ36LQBWXJ/merchant-integrations/credentials/
+Response Debug ID: d5880680abece
+Response: Array
+(
+    [code] => 200
+    [message] => OK
+)
+
+
+2026-06-04T15:10:07+00:00 INFO #7495 - Updating connection details CONTEXT: {"is_sandbox":false,"client_id":"BAAnWP4xnmM8214pqqnR6TItzNXsEGZuhB6gei6QrOC7fUPuYTryftIzOuxnEtc36aLHQcI0u94FOhOY54","client_secret":"EGAQXusE33rmeSKJu_yseo8EdicKl4MOUDxLh-8f-zjxAGcvGXYOYzQeyHHITUc6zGSO_PbNDUNbGy3p","merchant_id":"KY5SA7SN7RV6L","merchant_email":"kevinalvaneciosup@gmail.com","merchant_country":"","seller_type":"personal"}
+2026-06-04T15:10:07+00:00 INFO #7495 - Merchant successfully connected to PayPal
+2026-06-04T15:10:07+00:00 INFO #7495 - Calling internal REST endpoint [http://mgwp.com/index.php?rest_route=/wc/v3/wc_paypal/common/seller-account]
+2026-06-04T15:10:12+00:00 DEBUG #7495 - Finished internal REST call [http://mgwp.com/index.php?rest_route=/wc/v3/wc_paypal/common/seller-account]
+2026-06-04T15:10:12+00:00 ERROR #7495 - Internal REST error CONTEXT: {"response":{"errors":{"http_request_failed":["cURL error 28: Operation timed out after 5011 milliseconds with 0 bytes received"]},"error_data":[]}}
+2026-06-04T15:10:12+00:00 WARNING #7495 - Failed to enrich merchant details: Internal REST error CONTEXT: {"reason":"Internal REST error","details":null}
+2026-06-04T15:10:12+00:00 INFO #7495 - Flushing API caches...
+2026-06-04T15:10:12+00:00 INFO #7495 - Merchant connected, complete onboarding and set defaults.
+2026-06-04T15:10:12+00:00 DEBUG #7495 - Webhook lock acquired for 'register'.
+2026-06-04T15:10:12+00:00 DEBUG #7495 - Webhook operation 'register' started.
+2026-06-04T15:10:13+00:00 DEBUG #7495 - GET https://api.woocommerce.com/integrations/ppc/v1/notifications/webhooks
+Response: Array
+(
+    [code] => 404
+    [message] => Not Found
+)
+
+Response Body: {"statusCode":404,"error":"Not Found","message":"Not Found"}
+
+2026-06-04T15:10:13+00:00 ERROR #7495 - Failed to delete webhooks: [Error] Not Found
+2026-06-04T15:10:13+00:00 INFO #7495 - Webhooks deleted.
+2026-06-04T15:10:14+00:00 DEBUG #7495 - POST https://api.woocommerce.com/integrations/ppc/v1/notifications/webhooks
+Request Body: {"url":"https:\/\/mgwp.com\/index.php?rest_route=\/paypal\/v1\/incoming","event_types":[{"name":"CHECKOUT.ORDER.APPROVED"},{"name":"CHECKOUT.ORDER.COMPLETED"},{"name":"CHECKOUT.PAYMENT-APPROVAL.REVERSED"},{"name":"PAYMENT.CAPTURE.REFUNDED"},{"name":"PAYMENT.AUTHORIZATION.VOIDED"},{"name":"PAYMENT.CAPTURE.REVERSED"},{"name":"PAYMENT.ORDER.CANCELLED"},{"name":"PAYMENT.CAPTURE.DENIED"},{"name":"PAYMENT.CAPTURE.COMPLETED"},{"name":"VAULT.PAYMENT-TOKEN.DELETED"},{"name":"PAYMENT.CAPTURE.PENDING"},{"name":"PAYMENT.SALE.COMPLETED"},{"name":"PAYMENT.SALE.REFUNDED"},{"name":"BILLING.SUBSCRIPTION.CANCELLED"},{"name":"BILLING.PLAN.PRICING-CHANGE.ACTIVATED"},{"name":"CATALOG.PRODUCT.UPDATED"},{"name":"BILLING.PLAN.UPDATED"}]}
+Response: Array
+(
+    [code] => 404
+    [message] => Not Found
+)
+
+Response Body: {"statusCode":404,"error":"Not Found","message":"Not Found"}
+
+2026-06-04T15:10:14+00:00 ERROR #7495 - Failed to subscribe webhooks: [Error] Not Found
+2026-06-04T15:10:14+00:00 DEBUG #7495 - Webhook lock released for 'register'.
